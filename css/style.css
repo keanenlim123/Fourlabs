@@ -881,7 +881,7 @@ nav {
 }
 
 .team-image {
-    height: 300px;
+    height: 400px;
     background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(255, 107, 53, 0.2));
     display: flex;
     align-items: center;
