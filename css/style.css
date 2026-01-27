@@ -1813,8 +1813,6 @@ footer {
     font-size: 1rem;
 }
 
-
-
 /* Responsive */
 @media (max-width: 1200px) {
     .hero-container {
@@ -1902,4 +1900,3 @@ footer {
         padding: 5rem 5%;
     }
 }
-
