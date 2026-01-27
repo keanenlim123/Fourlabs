@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Behind Closed Doors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">🔍</div>
+                <div class="logo-text">BEHIND CLOSED DOORS</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Signup Container -->
+    <div class="signup-container">
+        <div class="signup-wrapper">
+            <div class="signup-card">
+                <!-- Signup Header -->
+                <div class="signup-header">
+                    <div class="signup-icon">✨</div>
+                    <h1>SIGN UP</h1>
+                    <p>Create your account to start the experience</p>
+                </div>
+
+                <!-- Signup Body -->
+                <div class="signup-body">
+                    <form id="signupForm">
+                        <div class="form-group full-width">
+                            <label for="signupUsername">Username</label>
+                            <input type="text" id="signupUsername" placeholder="John" required>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="signupEmail">Email Address</label>
+                            <input type="email" id="signupEmail" placeholder="your.email@example.com" required>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="signupPassword">Password</label>
+                            <input type="password" id="signupPassword" placeholder="Enter your password" required>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Create Account</button>
+                    </form>
+
+                    <!-- Login Link -->
+                    <div class="login-link">
+                        Already have an account? <a href="login.html">Login here</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="signup-footer">
+                <p>By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                </p>
+                <p style="margin-top: 1rem;">🆘 In crisis? <a href="tel:988">Call 988</a></p>
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        import { firebaseConfig } from "./js/firebase-Config.js";
+    </script>
+
+</body>
+
+</html>

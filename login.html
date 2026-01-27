@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Behind Closed Doors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">🔍</div>
+                <div class="logo-text">BEHIND CLOSED DOORS</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <div class="login-wrapper">
+            <div class="login-card">
+                <!-- Login Header -->
+                <div class="login-header">
+                    <div class="login-icon">🔐</div>
+                    <h1>LOGIN</h1>
+                    <p>Enter your credentials to continue</p>
+                </div>
+
+                <!-- Login Body -->
+                <div class="login-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address</label>
+                            <input type="email" id="loginEmail" placeholder="your.email@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Login</button>
+                    </form>
+
+
+                    <!-- Sign Up Link -->
+                    <div class="signup-link">
+                        Don't have an account? <a href="signup.html">Sign up here</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="login-footer">
+                <p>By logging in, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                </p>
+                <p style="margin-top: 1rem;">🆘 In crisis? <a href="tel:988">Call 988</a></p>
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        import { firebaseConfig } from "./js/firebase-Config.js";
+    </script>
+</body>
+
+</html>
