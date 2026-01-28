@@ -21,25 +21,17 @@
                 <div class="logo-icon">🔍</div>
                 <div class="logo-text">BEHIND CLOSED DOORS</div>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about_us.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
-                <div class="nav-auth" id="nav-auth">
-                    <li><a href="login.html" class="nav-login">Login</a></li>
-                    <li><a href="signup.html" class="nav-signup">Sign Up</a></li>
-                </div>
+                <div class="nav-auth" id="nav-auth"></div>
             </ul>
         </div>
     </nav>
 
-    <section class="page-header">
-        <h1 class="page-title">Leaderboard</h1>
-        <p class="page-subtitle">See how you rank among other detectives! (You must be logged in to view this page.)</p>
-    </section>
-
-    <section class="content-section" id="leaderboard-section" style="display:none;">
+    <section class="content-section" id="leaderboard-section" style="display:none; margin-top: 40px;">
         <div class="content-container">
             <div class="section-header">
                 <div class="section-tag">/// Top Detectives</div>
@@ -57,14 +49,14 @@
                         </tr>
                     </thead>
                     <tbody id="leaderboard-body">
-                        <!-- Leaderboard rows will be injected here -->
+
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
 
-    <section class="content-section" id="not-logged-in-section" style="display:none;">
+    <section class="content-section" id="not-logged-in-section" style="display:none; margin-top: 40px;">
         <div class="content-container" style="text-align:center;">
             <h2 style="color:var(--accent-orange);margin-bottom:2rem;">You must be logged in to view the leaderboard.</h2>
             <a href="login.html" class="btn btn-primary">Login</a>
@@ -112,7 +104,7 @@
             <p class="footer-crisis">Need Help? Call or Text 988</p>
         </div>
     </footer>
-    <script src="js/firebase-Config.js" type="module"></script>
+    <script type="module" src="js/firebase-Config.js"></script>
 </body>
 
 </html>
