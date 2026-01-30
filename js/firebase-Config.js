@@ -81,9 +81,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const email = document.getElementById("signupEmail").value;
             const password = document.getElementById("signupPassword").value;
             createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
+                .then(async (userCredential) => {
                     const user = userCredential.user;
-                    set(ref(database, "users/" + user.uid), {
+                    await set(ref(database, "users/" + user.uid), {
                         username: username,
                         email: email,
                         createdAt: new Date().toISOString()
