@@ -124,7 +124,9 @@ async function loadLeaderboard() {
         const rows = Object.values(users)
             .map(user => ({
                 username: user.username || "Anonymous",
-                bestTime: user.userStats?.bestRecordedTime ?? null
+                bestTime: user.userStats?.bestRecordedTime ?? null,
+                timesPlayed: user.userStats?.timesPlayed ?? 0,
+                badgeCount: user.userStats?.badges ? Object.keys(user.userStats.badges).length : 0 // Count badges
             }))
             .filter(entry => entry.bestTime !== null && entry.bestTime > 0)
             .sort((a, b) => a.bestTime - b.bestTime) // Sort by fastest time (lowest first)
@@ -143,6 +145,8 @@ async function loadLeaderboard() {
                     <td style="padding:1rem; font-size:1.2rem;">${rankEmoji} ${idx + 1}</td>
                     <td style="padding:1rem; font-weight:${idx < 3 ? 'bold' : 'normal'}; color:${idx < 3 ? 'var(--accent-yellow)' : 'var(--text-white)'};">${entry.username}</td>
                     <td style="padding:1rem; font-family:'Courier Prime', monospace; color:var(--accent-orange);">${entry.bestTime.toFixed(2)}s</td>
+                    <td style="padding:1rem; color:var(--accent-yellow);">${entry.timesPlayed}</td>
+                    <td style="padding:1rem; color:var(--accent-orange);">${entry.badgeCount}</td>
                 </tr>
             `;
         });
