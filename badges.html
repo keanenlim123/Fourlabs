@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard | Behind Closed Doors</title>
+    <title>Badges | Behind Closed Doors</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Courier+Prime:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
     <nav>
         <div class="nav-container">
@@ -30,37 +26,15 @@
         </div>
     </nav>
 
-    <section class="content-section" id="leaderboard-section" style="display:none; margin-top: 40px;">
-        <div class="content-container">
-            <div class="section-header">
-                <div class="section-tag">/// Top Detectives</div>
-                <h2 class="section-title">Leaderboard</h2>
-                <p class="section-description">Fastest times and highest scores in solving Ash's room puzzle.</p>
-            </div>
-            <div style="overflow-x:auto;">
-                <table id="leaderboard-table" style="width:100%; border-collapse:collapse; margin:0 auto;">
-                    <thead>
-                        <tr style="background:var(--bg-darker); border-bottom:3px solid var(--accent-orange);">
-                            <th style="padding:1rem; text-align:left;">Rank</th>
-                            <th style="padding:1rem; text-align:left;">Username</th>
-                            <th style="padding:1rem; text-align:left;">Time (s)</th>
-                            <th style="padding:1rem; text-align:left;">Times Replayed</th>
-                            <th style="padding:1rem; text-align:left;">Badges</th>
-                        </tr>
-                    </thead>
-                    <tbody id="leaderboard-body">
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    <section class="page-header">
+        <h1 class="page-title" id="badges-title">Badges</h1>
+        <p class="page-subtitle" id="badges-subtitle">See which badges have been unlocked and their descriptions.</p>
     </section>
 
-    <section class="content-section" id="not-logged-in-section" style="display:none; margin-top: 40px;">
-        <div class="content-container" style="text-align:center;">
-            <h2 style="color:var(--accent-orange);margin-bottom:2rem;">You must be logged in to view the leaderboard.</h2>
-            <a href="login.html" class="btn btn-primary">Login</a>
-            <a href="signup.html" class="btn btn-secondary" style="margin-left:1rem;">Sign Up</a>
+    <section class="content-section" style="min-height:40vh;">
+        <div class="content-container" id="badges-container">
+
+            <div style="text-align:center;color:var(--text-gray);padding:2rem;">Loading badges...</div>
         </div>
     </section>
 
@@ -104,7 +78,7 @@
             <p class="footer-crisis">Need Help? Call or Text 988</p>
         </div>
     </footer>
+
     <script type="module" src="js/firebase-Config.js"></script>
 </body>
-
 </html>

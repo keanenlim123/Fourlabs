@@ -35,6 +35,12 @@ function updateNavAuth(user) {
     }
 }
 
+// Render nav immediately if user is already authenticated (prevents flicker)
+document.addEventListener("DOMContentLoaded", () => {
+    updateNavAuth(auth.currentUser);
+});
+
+// Listen for auth state changes (handles login/logout and initial load)
 onAuthStateChanged(auth, (user) => {
     updateNavAuth(user);
 
@@ -121,21 +127,17 @@ async function loadLeaderboard() {
         }
         
         const users = snapshot.val();
-        const rows = Object.values(users)
-            .map(user => ({
+        const rows = Object.entries(users)
+            .map(([uid, user]) => ({
+                uid, // Add UID for badge lookup
                 username: user.username || "Anonymous",
                 bestTime: user.userStats?.bestRecordedTime ?? null,
                 timesPlayed: user.userStats?.timesPlayed ?? 0,
-                badgeCount: user.userStats?.badges ? Object.keys(user.userStats.badges).length : 0 // Count badges
+                badgeCount: user.userStats?.badges ? Object.keys(user.userStats.badges).length : 0
             }))
             .filter(entry => entry.bestTime !== null && entry.bestTime > 0)
-            .sort((a, b) => a.bestTime - b.bestTime) // Sort by fastest time (lowest first)
-            .slice(0, 5); // Get top 5
-
-        if (rows.length === 0) {
-            leaderboardBody.innerHTML = `<tr><td colspan="4" style="text-align:center;color:var(--text-gray);padding:2rem;">No players have completed the game yet.</td></tr>`;
-            return;
-        }
+            .sort((a, b) => a.bestTime - b.bestTime)
+            .slice(0, 5);
 
         leaderboardBody.innerHTML = "";
         rows.forEach((entry, idx) => {
@@ -146,12 +148,70 @@ async function loadLeaderboard() {
                     <td style="padding:1rem; font-weight:${idx < 3 ? 'bold' : 'normal'}; color:${idx < 3 ? 'var(--accent-yellow)' : 'var(--text-white)'};">${entry.username}</td>
                     <td style="padding:1rem; font-family:'Courier Prime', monospace; color:var(--accent-orange);">${entry.bestTime.toFixed(2)}s</td>
                     <td style="padding:1rem; color:var(--accent-yellow);">${entry.timesPlayed}</td>
-                    <td style="padding:1rem; color:var(--accent-orange);">${entry.badgeCount}</td>
+                    <td style="padding:1rem; color:var(--accent-orange);">
+                        <a href="badges.html?uid=${encodeURIComponent(entry.uid)}" class="badge-link" style="color:var(--accent-orange);text-decoration:underline;cursor:pointer;">
+                            ${entry.badgeCount}
+                        </a>
+                    </td>
                 </tr>
             `;
         });
     }, (error) => {
         console.error("Leaderboard error:", error);
         leaderboardBody.innerHTML = `<tr><td colspan="4" style="text-align:center;color:var(--accent-orange);padding:2rem;">Error loading leaderboard.</td></tr>`;
+    });
+}
+
+
+// --- BADGES LOGIC ---
+function getQueryParam(name) {
+    const url = new URL(window.location.href);
+    return url.searchParams.get(name);
+}
+
+const uid = getQueryParam('uid');
+const container = document.getElementById('badges-container');
+const title = document.getElementById('badges-title');
+const subtitle = document.getElementById('badges-subtitle');
+
+if (!uid) {
+    title.textContent = "No User Selected";
+    subtitle.textContent = "";
+    container.innerHTML = `<div style="text-align:center;color:var(--accent-orange);padding:2rem;">No user selected.</div>`;
+} else {
+    get(ref(database, "users/" + uid)).then(snapshot => {
+        if (!snapshot.exists()) {
+            title.textContent = "User Not Found";
+            subtitle.textContent = "";
+            container.innerHTML = `<div style="text-align:center;color:var(--accent-orange);padding:2rem;">User not found.</div>`;
+            return;
+        }
+        const user = snapshot.val();
+        const username = user.username || "Anonymous";
+        const badges = user.userStats?.badges || {};
+
+        title.textContent = `${username}'s Badges`;
+        subtitle.textContent = "See which badges have been unlocked and their descriptions.";
+
+        if (Object.keys(badges).length === 0) {
+            container.innerHTML = `<div style="text-align:center;color:var(--text-gray);padding:2rem;">No badges unlocked yet.</div>`;
+            return;
+        }
+
+        container.innerHTML = `<div class="badges-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;">${
+            Object.entries(badges).map(([badgeId, badge]) => `
+                <div style="background:var(--bg-darker);border:2px solid ${badge.unlocked ? 'var(--accent-teal)' : 'var(--border)'};border-radius:10px;padding:1.5rem;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.2);">
+                    <h3 style="color:${badge.unlocked ? 'var(--accent-teal)' : 'var(--text-gray)'};margin-bottom:1rem;font-family:'Courier Prime',monospace;">${badge.name || badgeId}</h3>
+                    <p style="color:var(--text-gray);margin-bottom:1rem;">${badge.description || ''}</p>
+                    <span ${badge.unlocked ? 'var(--accent-teal)' : 'var(--border)'};color:var(--bg-darker);font-weight:bold;">
+                        ${badge.unlocked ? 'Unlocked' : 'Locked'}
+                    </span>
+                </div>
+            `).join('')
+        }</div>`;
+    }).catch(() => {
+        title.textContent = "Error";
+        subtitle.textContent = "";
+        container.innerHTML = `<div style="text-align:center;color:var(--accent-orange);padding:2rem;">Error loading badges.</div>`;
     });
 }
