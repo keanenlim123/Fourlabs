@@ -2,51 +2,88 @@
 <html lang="en">
 
 <head>
+    <!-- Document Metadata
+        Page: Login
+        Project: Behind Closed Doors
+        Description: User authentication page for existing account login.-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Behind Closed Doors</title>
+    
+    <!-- Google Fonts: Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <!-- Navigation -->
+    <!-- Navigation Bar
+        - Displays site navigation links
+        - Authentication state is dynamically rendered via Firebase -->
     <nav>
         <div class="nav-container">
+            
+            <!-- Logo Section -->
             <div class="logo">
                 <div class="logo-icon">🔍</div>
                 <div class="logo-text">BEHIND CLOSED DOORS</div>
             </div>
+            
+            <!-- Navigation Links -->
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about_us.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
+                
+                <!-- Authentication Links Container
+                    Dynamically updated by Firebase auth listener -->
                 <div class="nav-auth" id="nav-auth">
             </ul>
         </div>
     </nav>
 
-    <!-- Login Container -->
+    <!-- Login Container
+        - Main wrapper for login page content
+        - Contains authentication form and footer information -->
     <div class="login-container">
         <div class="login-wrapper">
+            
+            <!-- Login Card
+                - Centered card containing authentication form
+                - Includes header with icon and description -->
             <div class="login-card">
-                <!-- Login Header -->
+                
+                <!-- Login Header
+                    - Displays page title and instruction message
+                    - Visual lock icon to represent security/authentication -->
                 <div class="login-header">
                     <div class="login-icon">🔐</div>
                     <h1>LOGIN</h1>
                     <p>Enter your credentials to continue</p>
                 </div>
 
-                <!-- Login Body -->
+                <!-- Login Body
+                    - Contains authentication form with email and password fields
+                    - Form submission handled by Firebase authentication -->
                 <div class="login-body">
+                    
+                    <!-- Login Form
+                        - Authenticates existing users via email and password
+                        - Submitted data processed by firebase-Config.js
+                        - Both fields are required for successful login -->
                     <form id="loginForm">
+                        
+                        <!-- Email Input Field -->
                         <div class="form-group">
                             <label for="loginEmail">Email Address</label>
                             <input type="email" id="loginEmail" placeholder="your.email@example.com" required>
                         </div>
 
+                        <!-- Password Input Field
+                            - Wrapped in password-wrapper for potential show/hide functionality -->
                         <div class="form-group">
                             <label for="loginPassword">Password</label>
                             <div class="password-wrapper">
@@ -54,18 +91,25 @@
                             </div>
                         </div>
 
+                        <!-- Submit Button
+                            Authenticates user credentials via Firebase -->
                         <button type="submit" class="submit-btn">Login</button>
                     </form>
 
 
-                    <!-- Sign Up Link -->
+                    <!-- Sign Up Link
+                        - Redirects new users to registration page
+                        - Provides alternative path for users without accounts -->
                     <div class="signup-link">
                         Don't have an account? <a href="signup.html">Sign up here</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Footer -->
+            <!-- Login Footer
+                - Legal information and terms
+                - Crisis support hotline information
+                - Reinforces mental health awareness mission -->
             <div class="login-footer">
                 <p>By logging in, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
                 </p>
@@ -73,6 +117,11 @@
             </div>
         </div>
     </div>
+    
+    <!-- Firebase Configuration Script
+        - Imports Firebase configuration for authentication
+        - Type="module" allows ES6 imports
+        - Handles user login logic -->
     <script type="module">
         import { firebaseConfig } from "./js/firebase-Config.js";
     </script>

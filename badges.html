@@ -1,50 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Document Metadata
+        Page: Badges
+        Project: Behind Closed Doors
+        Description: Displays unlocked achievement badges and their descriptions.-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Badges | Behind Closed Doors</title>
+    
+    <!-- Google Fonts -->
+    <!-- Space Grotesk (UI headings) & Courier Prime (monospace timing text) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Typography: Space Grotesk for UI, Courier Prime for monospace elements -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Navigation Bar
+        - Displays site navigation links
+        - Authentication state is dynamically rendered via Firebase -->
     <nav>
         <div class="nav-container">
+            
+            <!-- Logo Section -->
             <div class="logo">
                 <div class="logo-icon">🔍</div>
                 <div class="logo-text">BEHIND CLOSED DOORS</div>
             </div>
+            
+            <!-- Navigation Links -->
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about_us.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
+                
+                <!-- Authentication Links Container
+                    Dynamically updated by Firebase auth listener -->
                 <div class="nav-auth" id="nav-auth"></div>
             </ul>
         </div>
     </nav>
 
+    <!-- Page Header Section
+        - Displays page title and description
+        - Introduces badge achievement system -->
     <section class="page-header">
         <h1 class="page-title" id="badges-title">Badges</h1>
         <p class="page-subtitle" id="badges-subtitle">See which badges have been unlocked and their descriptions.</p>
     </section>
 
+    <!-- Badges Display Section
+        - Shows all available badges with unlock status
+        - Populated dynamically via Firebase database
+        - Displays badge icons, names, and descriptions -->
     <section class="content-section" style="min-height:40vh;">
+        
+        <!-- Badges Container
+            Dynamically injected badge cards via Firebase JS logic -->
         <div class="content-container" id="badges-container">
-
+            
+            <!-- Loading State Placeholder
+                Replaced once badges are fetched from database -->
             <div style="text-align:center;color:var(--text-gray);padding:2rem;">Loading badges...</div>
         </div>
     </section>
 
+    <!-- Footer Section
+        - Provides additional resources
+        - Includes crisis hotline information
+        - Reinforces mental health awareness theme -->
     <footer>
         <div class="footer-content">
+            
+            <!-- Brand Description -->
             <div class="footer-brand">
                 <h3>BEHIND CLOSED DOORS</h3>
                 <p>An immersive first-person puzzle experience dedicated to mental health awareness. Learn to recognize
                     the signs through detective gameplay and careful observation.</p>
             </div>
+            
+            <!-- Game Links -->
             <div class="footer-section">
                 <h4>Game</h4>
                 <ul class="footer-links">
@@ -54,6 +95,8 @@
                     <li><a href="#">FAQ</a></li>
                 </ul>
             </div>
+            
+            <!-- Resource Links -->
             <div class="footer-section">
                 <h4>Resources</h4>
                 <ul class="footer-links">
@@ -63,6 +106,8 @@
                     <li><a href="#">Support Groups</a></li>
                 </ul>
             </div>
+            
+            <!-- Support Links -->
             <div class="footer-section">
                 <h4>Support</h4>
                 <ul class="footer-links">
@@ -72,13 +117,19 @@
                     <li><a href="#">Contact Us</a></li>
                 </ul>
             </div>
+            
         </div>
+        
+        <!-- Footer Bottom -->
         <div class="footer-bottom">
             <p>© 2026 Four Labs. Mental Health Awareness Initiative.</p>
             <p class="footer-crisis">Need Help? Call or Text 988</p>
         </div>
     </footer>
 
+    <!-- Firebase Script
+        Loads authentication and badges logic.
+        Type="module" allows ES6 imports. -->
     <script type="module" src="js/firebase-Config.js"></script>
 </body>
 </html>

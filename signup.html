@@ -2,72 +2,116 @@
 <html lang="en">
 
 <head>
+    <!-- Document Metadata
+        Page: Sign Up
+        Project: Behind Closed Doors
+        Description: User registration page for creating new accounts.-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up | Behind Closed Doors</title>
+
+    <!-- Google Fonts: Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <!-- Navigation -->
+    <!-- Navigation Bar
+        - Displays site navigation links
+        - Authentication state is dynamically rendered via Firebase -->
     <nav>
         <div class="nav-container">
+
+            <!-- Logo Section -->
             <div class="logo">
                 <div class="logo-icon">🔍</div>
                 <div class="logo-text">BEHIND CLOSED DOORS</div>
             </div>
+
+            <!-- Navigation Links -->
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about_us.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
+
+                <!-- Authentication Links Container
+                    Dynamically updated by Firebase auth listener -->
                 <div class="nav-auth" id="nav-auth">
             </ul>
         </div>
     </nav>
 
-    <!-- Signup Container -->
+    <!-- Signup Container
+        - Main wrapper for sign up page content
+        - Contains registration form and footer information -->
     <div class="signup-container">
         <div class="signup-wrapper">
+
+            <!-- Signup Card
+                - Centered card containing registration form
+                - Includes header with icon and description -->
             <div class="signup-card">
-                <!-- Signup Header -->
+
+                <!-- Signup Header
+                    - Displays page title and welcome message
+                    - Visual icon to enhance user experience -->
                 <div class="signup-header">
                     <div class="signup-icon">✨</div>
                     <h1>SIGN UP</h1>
                     <p>Create your account to start the experience</p>
                 </div>
 
-                <!-- Signup Body -->
+                <!-- Signup Body
+                    - Contains registration form with username, email, and password fields
+                    - Form submission handled by Firebase authentication -->
                 <div class="signup-body">
+
+                    <!-- Registration Form
+                        - Collects user credentials for account creation
+                        - Submitted data processed by firebase-Config.js
+                        - All fields are required for successful registration -->
                     <form id="signupForm">
+
+                        <!-- Username Input Field -->
                         <div class="form-group full-width">
                             <label for="signupUsername">Username</label>
                             <input type="text" id="signupUsername" placeholder="John" required>
                         </div>
 
+                        <!-- Email Input Field -->
                         <div class="form-group full-width">
                             <label for="signupEmail">Email Address</label>
                             <input type="email" id="signupEmail" placeholder="your.email@example.com" required>
                         </div>
 
+                        <!-- Password Input Field -->
                         <div class="form-group full-width">
                             <label for="signupPassword">Password</label>
                             <input type="password" id="signupPassword" placeholder="Enter your password" required>
                         </div>
 
+                        <!-- Submit Button
+                            Creates new user account in Firebase -->
                         <button type="submit" class="submit-btn">Create Account</button>
                     </form>
 
-                    <!-- Login Link -->
+                    <!-- Login Link
+                        - Redirects existing users to login page
+                        - Provides alternative path for users who already have accounts -->
                     <div class="login-link">
                         Already have an account? <a href="login.html">Login here</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Footer -->
+            <!-- Signup Footer
+                - Legal information and terms
+                - Crisis support hotline information
+                - Reinforces mental health awareness mission -->
             <div class="signup-footer">
                 <p>By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
                 </p>
@@ -75,6 +119,11 @@
             </div>
         </div>
     </div>
+
+    <!-- Firebase Configuration Script
+        - Imports Firebase configuration for authentication
+        - Type="module" allows ES6 imports
+        - Handles user registration logic -->
     <script type="module">
         import { firebaseConfig } from "./js/firebase-Config.js";
     </script>

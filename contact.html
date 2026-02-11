@@ -2,54 +2,89 @@
 <html lang="en">
 
 <head>
+    <!-- Document Metadata
+        Page: Contact Us
+        Project: Behind Closed Doors
+        Description: Contact form and inquiry information for users, educators, and partners.-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | Behind Closed Doors</title>
+    
+    <!-- Google Fonts -->
+    <!-- Space Grotesk (UI headings) & Courier Prime (monospace timing text) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Courier+Prime:wght@400;700&display=swap"
         rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <!-- Navigation Bar
+        - Displays site navigation links
+        - Authentication state is dynamically rendered via Firebase -->
     <nav>
         <div class="nav-container">
+            
+            <!-- Logo Section -->
             <div class="logo">
                 <div class="logo-icon">🔍</div>
                 <div class="logo-text">BEHIND CLOSED DOORS</div>
             </div>
+            
+            <!-- Navigation Links -->
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about_us.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
+                
+                <!-- Authentication Links Container
+                    Dynamically updated by Firebase auth listener -->
                 <div class="nav-auth" id="nav-auth"></div>
             </ul>
         </div>
     </nav>
 
+    <!-- Page Header Section
+        - Displays page title and description
+        - Introduces contact and inquiry options -->
     <section class="page-header">
         <h1 class="page-title">Contact Us</h1>
         <p class="page-subtitle">Have questions? Want to collaborate? We'd love to hear from you.</p>
     </section>
 
+    <!-- Contact Section
+        - Contains contact form and contact information cards
+        - Form allows users to send messages based on their role
+        - Info cards provide direct contact methods for different purposes -->
     <section class="contact-section">
         <div class="contact-container">
+            
+            <!-- Contact Form Wrapper
+                - User-facing message submission form
+                - Collects name, email, category, subject, and message
+                - Required fields marked with asterisk (*) -->
             <div class="contact-form-wrapper">
                 <h2>Send Us a Message</h2>
                 <form>
+                    <!-- Name Input Field -->
                     <div class="form-group">
                         <label for="name">Name *</label>
                         <input type="text" id="name" name="name" required>
                     </div>
 
+                    <!-- Email Input Field -->
                     <div class="form-group">
                         <label for="email">Email *</label>
                         <input type="email" id="email" name="email" required>
                     </div>
 
+                    <!-- Category Dropdown
+                        Allows users to identify their role/purpose for contacting -->
                     <div class="form-group">
                         <label for="category">I am a... *</label>
                         <select id="category" name="category" required>
@@ -64,21 +99,29 @@
                         </select>
                     </div>
 
+                    <!-- Subject Input Field -->
                     <div class="form-group">
                         <label for="subject">Subject *</label>
                         <input type="text" id="subject" name="subject" required>
                     </div>
 
+                    <!-- Message Textarea -->
                     <div class="form-group">
                         <label for="message">Message *</label>
                         <textarea id="message" name="message" required></textarea>
                     </div>
 
+                    <!-- Submit Button -->
                     <button type="submit" class="submit-btn">Send Message</button>
                 </form>
             </div>
 
+            <!-- Contact Information Cards
+                - Provides alternative contact methods
+                - Organized by purpose: general inquiries, educators, and social media -->
             <div class="contact-info">
+                
+                <!-- General Email Contact Card -->
                 <div class="info-card">
                     <span class="info-icon">📧</span>
                     <h3>Email Us</h3>
@@ -86,6 +129,7 @@
                     <a href="mailto:info@behindcloseddoors.org">info@behindcloseddoors.org</a>
                 </div>
 
+                <!-- Educators Contact Card -->
                 <div class="info-card">
                     <span class="info-icon">🎓</span>
                     <h3>Educators</h3>
@@ -93,6 +137,7 @@
                     <a href="mailto:educators@behindcloseddoors.org">educators@behindcloseddoors.org</a>
                 </div>
 
+                <!-- Social Media Contact Card -->
                 <div class="info-card">
                     <span class="info-icon">💬</span>
                     <h3>Social Media</h3>
@@ -103,53 +148,72 @@
         </div>
     </section>
 
+    <!-- FAQ Section
+        - Frequently Asked Questions about the game/project
+        - Provides quick answers to common inquiries
+        - Covers pricing, age appropriateness, duration, research basis, and partnerships -->
     <section class="faq-section">
         <div class="faq-container">
+            
+            <!-- Section Header -->
             <div class="section-header">
                 <div class="section-tag">/// Frequently Asked</div>
                 <h2 class="section-title">Quick Answers</h2>
             </div>
 
+            <!-- FAQ Item: Pricing -->
             <div class="faq-item">
                 <h3>Is Behind Closed Doors free to use?</h3>
                 <p>Yes! The basic experience is free for individuals. We also offer free access to verified educators
                     with our complete curriculum package.</p>
             </div>
 
+            <!-- FAQ Item: Age Appropriateness -->
             <div class="faq-item">
                 <h3>What age group is this appropriate for?</h3>
                 <p>Behind Closed Doors is designed for ages 14+. It's ideal for high school health classes, college
                     mental health awareness programs, and community education.</p>
             </div>
 
+            <!-- FAQ Item: Duration -->
             <div class="faq-item">
                 <h3>How long does the experience take?</h3>
                 <p>The core experience takes 20-30 minutes. With guided discussion and follow-up activities, a complete
                     lesson can range from 45-90 minutes.</p>
             </div>
 
+            <!-- FAQ Item: Evidence-Based Content -->
             <div class="faq-item">
                 <h3>Is this experience evidence-based?</h3>
                 <p>Yes. All content has been developed and reviewed by licensed mental health professionals and is based
                     on current research in mental health recognition and education.</p>
             </div>
 
+            <!-- FAQ Item: Research and Publications -->
             <div class="faq-item">
                 <h3>Can I use this for my research or publication?</h3>
-                <p>We welcome academic partnerships. Please contact us at <a
+                <p>We welcome academic partnerships. Please contact us at 
                         href="mailto:info@behindcloseddoors.org">info@behindcloseddoors.org</a> to discuss collaboration
                     opportunities.</p>
             </div>
         </div>
     </section>
 
+    <!-- Footer Section
+        - Provides additional resources
+        - Includes crisis hotline information
+        - Reinforces mental health awareness theme -->
     <footer>
         <div class="footer-content">
+            
+            <!-- Brand Description -->
             <div class="footer-brand">
                 <h3>BEHIND CLOSED DOORS</h3>
                 <p>An immersive first-person puzzle experience dedicated to mental health awareness. Learn to recognize
                     the signs through detective gameplay and careful observation.</p>
             </div>
+            
+            <!-- Game Links -->
             <div class="footer-section">
                 <h4>Game</h4>
                 <ul class="footer-links">
@@ -159,6 +223,8 @@
                     <li><a href="#">FAQ</a></li>
                 </ul>
             </div>
+            
+            <!-- Resource Links -->
             <div class="footer-section">
                 <h4>Resources</h4>
                 <ul class="footer-links">
@@ -168,6 +234,8 @@
                     <li><a href="#">Support Groups</a></li>
                 </ul>
             </div>
+            
+            <!-- Support Links -->
             <div class="footer-section">
                 <h4>Support</h4>
                 <ul class="footer-links">
@@ -178,12 +246,17 @@
                 </ul>
             </div>
         </div>
+        
+        <!-- Footer Bottom -->
         <div class="footer-bottom">
             <p>© 2026 Four Labs. Mental Health Awareness Initiative.</p>
             <p class="footer-crisis">Need Help? Call or Text 988</p>
         </div>
     </footer>
 
+    <!-- Firebase Script
+        Loads authentication logic.
+        Type="module" allows ES6 imports. -->
     <script type="module" src="js/firebase-Config.js"></script>
 </body>
 

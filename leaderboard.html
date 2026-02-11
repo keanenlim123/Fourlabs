@@ -2,43 +2,76 @@
 <html lang="en">
 
 <head>
+    <!-- Document Metadata
+        Page: Leaderboard
+        Project: Behind Closed Doors
+        Description: Displays top players ranked by best recorded time.-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard | Behind Closed Doors</title>
+
+    <!-- Google Fonts -->
+    <!-- Space Grotesk (UI headings) & Courier Prime (monospace timing text) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Courier+Prime:wght@400;700&display=swap"
         rel="stylesheet">
+
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+
+    <!-- Navigation Bar
+        - Displays site navigation links
+        - Authentication state is dynamically rendered via Firebase -->
     <nav>
         <div class="nav-container">
+
+            <!-- Logo Section -->
             <div class="logo">
                 <div class="logo-icon">🔍</div>
                 <div class="logo-text">BEHIND CLOSED DOORS</div>
             </div>
+
+            <!-- Navigation Links -->
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about_us.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
+
+                <!-- Authentication Links Container
+                    Dynamically updated by Firebase auth listener -->
                 <div class="nav-auth" id="nav-auth"></div>
             </ul>
         </div>
     </nav>
 
+
+    <!-- Leaderboard Section
+        - Visible only when user is authenticated
+        - Displays top 5 players ranked by fastest completion time
+        - Populated dynamically via Firebase Realtime Database -->
     <section class="content-section" id="leaderboard-section" style="display:none; margin-top: 40px;">
         <div class="content-container">
+
+            <!-- Section Header -->
             <div class="section-header">
                 <div class="section-tag">/// Top Detectives</div>
                 <h2 class="section-title">Leaderboard</h2>
-                <p class="section-description">Fastest times and highest scores in solving Ash's room puzzle.</p>
+                <p class="section-description">
+                    Fastest times and highest scores in solving Ash's room puzzle.
+                </p>
             </div>
+
+            <!-- Leaderboard Table -->
             <div style="overflow-x:auto;">
                 <table id="leaderboard-table" style="width:100%; border-collapse:collapse; margin:0 auto;">
+                    
+                    <!-- Table Header -->
                     <thead>
                         <tr style="background:var(--bg-darker); border-bottom:3px solid var(--accent-orange);">
                             <th style="padding:1rem; text-align:left;">Rank</th>
@@ -48,29 +81,49 @@
                             <th style="padding:1rem; text-align:left;">Badges</th>
                         </tr>
                     </thead>
-                    <tbody id="leaderboard-body">
 
+                    <!-- Table Body
+                        Dynamically injected rows via Firebase JS logic -->
+                    <tbody id="leaderboard-body">
                     </tbody>
+
                 </table>
             </div>
         </div>
     </section>
 
+
+    <!-- Not Logged In Section
+        - Shown when user is not authenticated
+        - Provides quick navigation to Login / Sign Up -->
     <section class="content-section" id="not-logged-in-section" style="display:none; margin-top: 40px;">
         <div class="content-container" style="text-align:center;">
-            <h2 style="color:var(--accent-orange);margin-bottom:2rem;">You must be logged in to view the leaderboard.</h2>
+            <h2 style="color:var(--accent-orange);margin-bottom:2rem;">
+                You must be logged in to view the leaderboard.
+            </h2>
             <a href="login.html" class="btn btn-primary">Login</a>
             <a href="signup.html" class="btn btn-secondary" style="margin-left:1rem;">Sign Up</a>
         </div>
     </section>
 
+
+    <!-- Footer Section
+        - Provides additional resources
+        - Includes crisis hotline information
+        - Reinforces mental health awareness theme -->
     <footer>
         <div class="footer-content">
+
+            <!-- Brand Description -->
             <div class="footer-brand">
                 <h3>BEHIND CLOSED DOORS</h3>
-                <p>An immersive first-person puzzle experience dedicated to mental health awareness. Learn to recognize
-                    the signs through detective gameplay and careful observation.</p>
+                <p>
+                    An immersive first-person puzzle experience dedicated to mental health awareness.
+                    Learn to recognize the signs through detective gameplay and careful observation.
+                </p>
             </div>
+
+            <!-- Game Links -->
             <div class="footer-section">
                 <h4>Game</h4>
                 <ul class="footer-links">
@@ -80,6 +133,8 @@
                     <li><a href="#">FAQ</a></li>
                 </ul>
             </div>
+
+            <!-- Resource Links -->
             <div class="footer-section">
                 <h4>Resources</h4>
                 <ul class="footer-links">
@@ -89,6 +144,8 @@
                     <li><a href="#">Support Groups</a></li>
                 </ul>
             </div>
+
+            <!-- Support Links -->
             <div class="footer-section">
                 <h4>Support</h4>
                 <ul class="footer-links">
@@ -98,13 +155,21 @@
                     <li><a href="#">Contact Us</a></li>
                 </ul>
             </div>
+
         </div>
+
+        <!-- Footer Bottom -->
         <div class="footer-bottom">
             <p>© 2026 Four Labs. Mental Health Awareness Initiative.</p>
             <p class="footer-crisis">Need Help? Call or Text 988</p>
         </div>
     </footer>
-    <script type="module" src="js/firebase-Config.js"></script>
-</body>
 
+
+    <!-- Firebase Script
+        Loads authentication and leaderboard logic.
+        Type="module" allows ES6 imports.-->
+    <script type="module" src="js/firebase-Config.js"></script>
+
+</body>
 </html>
